@@ -9,15 +9,11 @@ import com.naxanria.mappy.util.Util;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.Element;
-import net.minecraft.client.gui.Screen;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.resource.language.I18n;
-import net.minecraft.server.command.CommandManager;
-import net.minecraft.text.StringTextComponent;
-import net.minecraft.text.Style;
-import net.minecraft.text.TextComponent;
-import net.minecraft.text.TextFormat;
-import net.minecraft.text.event.ClickEvent;
+import net.minecraft.text.LiteralText;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.dimension.DimensionType;
@@ -136,7 +132,7 @@ public class WayPointListEditor extends ScreenBase
     }
   }
   
-  private static final TextComponent title = new StringTextComponent("Waypoints");
+  private static final Text TITLE = new LiteralText("Waypoints");
   
   private WayPointManager manager = WayPointManager.INSTANCE;
   private int currentDim = 0;
@@ -157,7 +153,8 @@ public class WayPointListEditor extends ScreenBase
   
   public WayPointListEditor(Screen parent)
   {
-    super(title, parent);
+    super(TITLE, parent);
+
     if (minecraft == null)
     {
       minecraft = MinecraftClient.getInstance();

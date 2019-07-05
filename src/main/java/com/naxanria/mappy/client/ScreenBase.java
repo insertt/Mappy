@@ -3,12 +3,12 @@ package com.naxanria.mappy.client;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.gui.Drawable;
 import net.minecraft.client.gui.Element;
-import net.minecraft.client.gui.Screen;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.render.BufferBuilder;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.VertexFormats;
 import net.minecraft.client.resource.language.I18n;
-import net.minecraft.text.TextComponent;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.lwjgl.opengl.GL11;
 
@@ -16,12 +16,12 @@ public class ScreenBase extends Screen
 {
   public final Screen parent;
   
-  protected ScreenBase(TextComponent title)
+  protected ScreenBase(Text title)
   {
     this(title, null);
   }
   
-  public ScreenBase(TextComponent title, Screen parent)
+  public ScreenBase(Text title, Screen parent)
   {
     super(title);
     this.parent = parent;

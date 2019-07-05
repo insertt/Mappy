@@ -3,11 +3,12 @@ package com.naxanria.mappy.map.waypoint;
 import com.naxanria.mappy.client.ScreenBase;
 import com.naxanria.mappy.client.widget.TitledWidget;
 import com.naxanria.mappy.util.Predicates;
-import net.minecraft.client.gui.Screen;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.CheckboxWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
-import net.minecraft.text.StringTextComponent;
+import net.minecraft.text.LiteralText;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import org.lwjgl.glfw.GLFW;
 
@@ -16,7 +17,7 @@ import java.util.function.Predicate;
 
 public class WayPointEditor extends ScreenBase
 {
-  private static final StringTextComponent title = new StringTextComponent("Edit Waypoint");
+  private static final Text TITLE = new LiteralText("Edit Waypoint");
 
   private final WayPoint wayPoint;
   private int colorIndex;
@@ -30,7 +31,7 @@ public class WayPointEditor extends ScreenBase
   
   public WayPointEditor(WayPoint wayPoint, Screen parent, Consumer<WayPoint> onSaveCallback)
   {
-    super(title, parent);
+    super(TITLE, parent);
     
     this.wayPoint = wayPoint;
     colorIndex = getColorIndex(wayPoint.color);
@@ -59,17 +60,17 @@ public class WayPointEditor extends ScreenBase
     int pw = 60;
     
     xField = new TextFieldWidget(font, x, 70, pw, h, "");
-    xField.method_1890(validNumber);
+    xField.setTextPredicate(validNumber);
     xField.setMaxLength(7);
     xField.setText(wayPoint.pos.getX() + "");
     
     yField = new TextFieldWidget(font, x + pw, 70, pw, h, "");
-    yField.method_1890(validNumber);
+    yField.setTextPredicate(validNumber);
     yField.setMaxLength(7);
     yField.setText(wayPoint.pos.getY() + "");
     
     zField = new TextFieldWidget(font, x + pw + pw, 70, pw, h, "");
-    zField.method_1890(validNumber);
+    zField.setTextPredicate(validNumber);
     zField.setMaxLength(7);
     zField.setText(wayPoint.pos.getZ() + "");
     

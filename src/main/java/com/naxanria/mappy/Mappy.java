@@ -15,9 +15,6 @@ import net.fabricmc.fabric.api.event.client.ClientTickCallback;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.text.StringTextComponent;
-import net.minecraft.text.Style;
-import net.minecraft.text.TextFormat;
 import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
 

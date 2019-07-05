@@ -1,10 +1,8 @@
 package com.naxanria.mappy.client.widget;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.audio.SoundManager;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.widget.AbstractButtonWidget;
-
+import net.minecraft.client.sound.SoundManager;
 
 public class TitledWidget<W extends AbstractButtonWidget> extends AbstractButtonWidget
 {

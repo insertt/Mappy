@@ -2,14 +2,16 @@ package com.naxanria.mappy.map;
 
 import com.naxanria.mappy.Mappy;
 import com.naxanria.mappy.client.Alignment;
-import com.naxanria.mappy.config.Config;
 import com.naxanria.mappy.config.ConfigBase;
 import com.naxanria.mappy.config.Settings;
 import com.naxanria.mappy.map.chunk.ChunkCache;
 import com.naxanria.mappy.map.waypoint.WayPoint;
 import com.naxanria.mappy.map.waypoint.WayPointEditor;
 import com.naxanria.mappy.map.waypoint.WayPointManager;
-import com.naxanria.mappy.util.*;
+import com.naxanria.mappy.util.MathUtil;
+import com.naxanria.mappy.util.RandomUtil;
+import com.naxanria.mappy.util.StackUtil;
+import com.naxanria.mappy.util.TriValue;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
@@ -20,9 +22,8 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.text.StringTextComponent;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BoundingBox;
+import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -409,7 +410,7 @@ public class Map
       int checkHeight = 24;
       BlockPos start = new BlockPos(startX, player.y - checkHeight / 2, startZ);
       BlockPos end = new BlockPos(endX, player.y + checkHeight / 2, endZ);
-      List<Entity> entities = world.getEntities((Entity) null, new BoundingBox(start, end));
+      List<Entity> entities = world.getEntities((Entity) null, new Box(start, end));
   
       int t = 0;
       

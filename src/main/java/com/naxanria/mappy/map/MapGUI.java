@@ -8,7 +8,7 @@ import com.naxanria.mappy.config.Settings;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.ingame.ChatScreen;
+import net.minecraft.client.gui.screen.ChatScreen;
 import net.minecraft.client.render.BufferBuilder;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.VertexFormats;
