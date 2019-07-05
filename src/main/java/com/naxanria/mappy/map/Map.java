@@ -17,13 +17,9 @@ import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.resource.language.I18n;
 import net.minecraft.client.texture.NativeImage;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -87,6 +83,7 @@ public class Map {
         }
 
         PlayerEntity player = client.player;
+
         if (player != null) {
             if (playerIcon == null) {
                 playerIcon = new MapIcon.Player(this, player, true);
@@ -342,57 +339,56 @@ public class Map {
         players.clear();
         players.add(playerIcon);
 
-        List<? extends PlayerEntity> players = world.getPlayers();
-        for (PlayerEntity p :
-                players) {
-            if (p == player) {
-                continue;
-            }
+//        List<? extends PlayerEntity> players = world.getPlayers();
+//        for (PlayerEntity p : players) {
+//            if (p == player) {
+//                continue;
+//            }
+//
+//            if (p.isSneaking() || p.isSpectator()) {
+//                continue;
+//            }
+//
+//            BlockPos ppos = p.getBlockPos();
+//
+//            int x = ppos.getX();
+//            int z = ppos.getZ();
+//
+//            if (x >= startX && x <= endX && z >= startZ && z <= endZ) {
+//                MapIcon.Player playerIcon1 = new MapIcon.Player(this, p, false);
+//                playerIcon1.setPosition(MapIcon.getScaled(x, startX, endX, size), MapIcon.getScaled(z, startZ, endZ, size));
+//                this.players.add(playerIcon1);
+//            }
+//        }
 
-            if (p.isSneaking() || p.isSpectator()) {
-                continue;
-            }
-
-            BlockPos ppos = p.getBlockPos();
-
-            int x = ppos.getX();
-            int z = ppos.getZ();
-
-            if (x >= startX && x <= endX && z >= startZ && z <= endZ) {
-                MapIcon.Player playerIcon1 = new MapIcon.Player(this, p, false);
-                playerIcon1.setPosition(MapIcon.getScaled(x, startX, endX, size), MapIcon.getScaled(z, startZ, endZ, size));
-                this.players.add(playerIcon1);
-            }
-        }
-
-        if (Settings.showEntities) {
-            entities.clear();
-
-            int checkHeight = 24;
-            BlockPos start = new BlockPos(startX, player.y - checkHeight / 2, startZ);
-            BlockPos end = new BlockPos(endX, player.y + checkHeight / 2, endZ);
-            List<Entity> entities = world.getEntities((Entity) null, new Box(start, end));
-
-            int t = 0;
-
-            for (Entity entity :
-                    entities) {
-                if (entity instanceof LivingEntity && ! (entity instanceof PlayerEntity)) {
-                    t++;
-                    LivingEntity livingEntity = (LivingEntity) entity;
-                    MapIcon.Entity mie = new MapIcon.Entity(this, entity, livingEntity instanceof HostileEntity);
-
-                    mie.setPosition(MapIcon.getScaled((int) entity.x, startX, endX, size), MapIcon.getScaled((int) entity.z, startZ, endZ, size));
-
-                    this.entities.add(mie);
-                }
-                if (t >= 250) {
-                    break;
-                }
-            }
-
-            //      System.out.println("Found " + t + " entities");
-        }
+//        if (Settings.showEntities) {
+//            entities.clear();
+//
+//            int checkHeight = 24;
+//            BlockPos start = new BlockPos(startX, player.y - checkHeight / 2, startZ);
+//            BlockPos end = new BlockPos(endX, player.y + checkHeight / 2, endZ);
+//            List<Entity> entities = world.getEntities((Entity) null, new Box(start, end));
+//
+//            int t = 0;
+//
+//            for (Entity entity :
+//                    entities) {
+//                if (entity instanceof LivingEntity && ! (entity instanceof PlayerEntity)) {
+//                    t++;
+//                    LivingEntity livingEntity = (LivingEntity) entity;
+//                    MapIcon.Entity mie = new MapIcon.Entity(this, entity, livingEntity instanceof HostileEntity);
+//
+//                    mie.setPosition(MapIcon.getScaled((int) entity.x, startX, endX, size), MapIcon.getScaled((int) entity.z, startZ, endZ, size));
+//
+//                    this.entities.add(mie);
+//                }
+//                if (t >= 250) {
+//                    break;
+//                }
+//            }
+//
+//            //      System.out.println("Found " + t + " entities");
+//        }
 
 
         waypoints.clear();
