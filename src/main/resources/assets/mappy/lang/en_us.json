@@ -1,15 +1,12 @@
 {
   "mappy": "Mappy",
-
   "key.mappy.waypoint_create": "Create a Waypoint.",
   "key.mappy.hide_map": "Toggle minimap.",
   "key.mappy.waypoints_list": "Waypoints List",
-
   "mappy.config.category.general": "General",
   "mappy.config.category.info": "Map Info",
   "mappy.config.category.optimization": "Optimization",
   "mappy.config.category.items": "Items",
-
   "mappy.config.offset": "Offset",
   "mappy.config.draw_position": "Draw Position",
   "mappy.config.map_size": "Map Size",
@@ -36,11 +33,9 @@
   "mappy.config.item_show_biome": "Required item to show biome",
   "mappy.config.item_show_position": "Required item to show position",
   "mappy.config.item_show_time": "Required item to show time",
-
   "mappy.dim.overworld": "Overworld",
   "mappy.dim.nether": "The Nether",
   "mappy.dim.the_end": "The End",
-
   "mappy.gui.save": "Save",
   "mappy.gui.cancel": "Cancel",
   "mappy.gui.edit": "Edit",

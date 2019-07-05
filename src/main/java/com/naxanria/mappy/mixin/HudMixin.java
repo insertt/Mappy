@@ -8,19 +8,16 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(InGameHud.class)
-public class HudMixin
-{
-  @Inject(at = @At("RETURN"), method = "render(F)V")
-  public void render(float delta, CallbackInfo info)
-  {
-    MapGUI map = MapGUI.instance;
-    if (map != null)
-    {
-      map.draw();
+public class HudMixin {
+    @Inject(at = @At("RETURN"), method = "render(F)V")
+    public void render(float delta, CallbackInfo info) {
+        MapGUI map = MapGUI.instance;
+        if (map != null) {
+            map.draw();
+        }
+        //
+        //    GlStateManager.disableDepthTest();
+        //    WayPointRenderer.render(delta);
+        //    GlStateManager.enableDepthTest();
     }
-//
-//    GlStateManager.disableDepthTest();
-//    WayPointRenderer.render(delta);
-//    GlStateManager.enableDepthTest();
-  }
 }

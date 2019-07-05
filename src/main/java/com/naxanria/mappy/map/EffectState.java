@@ -1,8 +1,7 @@
 package com.naxanria.mappy.map;
 
-public enum EffectState
-{
-  NONE,
-  BENEFICIAL,
-  HARMFUL
+public enum EffectState {
+    NONE,
+    BENEFICIAL,
+    HARMFUL
 }

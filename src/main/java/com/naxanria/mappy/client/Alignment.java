@@ -1,8 +1,7 @@
 package com.naxanria.mappy.client;
 
-public enum Alignment
-{
-  Left,
-  Center,
-  Right
+public enum Alignment {
+    Left,
+    Center,
+    Right
 }

@@ -7,69 +7,56 @@ import net.minecraft.util.registry.Registry;
 
 import java.util.List;
 
-public class StackUtil
-{
-  public static boolean contains(PlayerInventory inventory, boolean inHotBar, String search)
-  {
-    
-    if (inHotBar)
-    {
-      return contains(inventory.offHand, search) || contains(inventory.main, search, 9);
+public class StackUtil {
+    public static boolean contains(PlayerInventory inventory, boolean inHotBar, String search) {
+
+        if (inHotBar) {
+            return contains(inventory.offHand, search) || contains(inventory.main, search, 9);
+        }
+
+        return contains(inventory.offHand, search) || contains(inventory.main, search);
     }
-    
-    return contains(inventory.offHand, search) || contains(inventory.main, search);
-  }
-  
-  public static boolean contains(List<ItemStack> stacks, String search, int end)
-  {
-    return contains(stacks, search, 0, end);
-  }
-  
-  public static boolean contains(List<ItemStack> stacks, String search, int start, int end)
-  {
-    for (int i = start; i < end; i++)
-    {
-      ItemStack stack = stacks.get(i);
-      if (search.equalsIgnoreCase(getIdString(stack)))
-      {
-        return true;
-      }
+
+    public static boolean contains(List<ItemStack> stacks, String search, int end) {
+        return contains(stacks, search, 0, end);
     }
-    
-    return false;
-  }
-  
-  public static boolean contains(List<ItemStack> stacks, String search)
-  {
-    for (ItemStack stack :
-      stacks)
-    {
-      String id = getIdString(stack);
-      if (search.equalsIgnoreCase(id))
-      {
-        return true;
-      }
+
+    public static boolean contains(List<ItemStack> stacks, String search, int start, int end) {
+        for (int i = start; i < end; i++) {
+            ItemStack stack = stacks.get(i);
+            if (search.equalsIgnoreCase(getIdString(stack))) {
+                return true;
+            }
+        }
+
+        return false;
     }
-    
-    return false;
-  }
-  
-  public static String getIdString(ItemStack stack)
-  {
-    if (stack.isEmpty())
-    {
-      return null;
+
+    public static boolean contains(List<ItemStack> stacks, String search) {
+        for (ItemStack stack :
+                stacks) {
+            String id = getIdString(stack);
+            if (search.equalsIgnoreCase(id)) {
+                return true;
+            }
+        }
+
+        return false;
     }
-  
-    Identifier id = Registry.ITEM.getId(stack.getItem());
-    String fullID = id.toString();
-    
-    if (stack.isDamaged())
-    {
-      fullID = fullID + "@" + stack.getDamage();
+
+    public static String getIdString(ItemStack stack) {
+        if (stack.isEmpty()) {
+            return null;
+        }
+
+        Identifier id = Registry.ITEM.getId(stack.getItem());
+        String fullID = id.toString();
+
+        if (stack.isDamaged()) {
+            fullID = fullID + "@" + stack.getDamage();
+        }
+
+
+        return fullID;
     }
-    
-    
-    return fullID;
-  }
 }

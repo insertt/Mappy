@@ -1,6 +1,5 @@
 package com.naxanria.mappy.util;
 
-public interface Action
-{
-  void invoke();
+public interface Action {
+    void invoke();
 }

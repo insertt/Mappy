@@ -13,8 +13,7 @@
   },
   "icon": "assets/mappy/icon.png",
   "environment": "client",
-  "custom":
-  {
+  "custom": {
     "modmenu:clientsideOnly": true
   },
   "entrypoints": {
@@ -28,7 +27,6 @@
   "mixins": [
     "mappy.mixins.json"
   ],
-
   "requires": {
     "fabricloader": ">=0.4.0",
     "fabric": "*"
